@@ -29,7 +29,7 @@ public class TestingResultController {
     }
 
     @PostMapping("/testIncrement")
-    public MVCTestRespDTO  get3(@RequestBody MVCTestRequestDTO request) {
+    public MVCTestRespDTO get3(@RequestBody MVCTestRequestDTO request) {
         System.out.println(request);
         return ts.mvcTestIncrement(request);
 

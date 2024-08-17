@@ -2,12 +2,13 @@ package ac.proj.projectStarter;
 
 
 import ac.proj.projectStarter.service.inf.TestingService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+@Slf4j
 @SpringBootTest
 public class ProjectTests {
     @Autowired
@@ -29,12 +30,13 @@ public class ProjectTests {
     // after running test,
     @Test
     void demoTesting1() {
-        System.out.println("Running demoTesting1 ###########################################################");
+        log.info("running demoTesting1");
+        //System.out.println("Running demoTesting1 ###########################################################");
         // assertEquals("s", "x"); // trigger failed case
     }
     @Test
     void demoTesting2() {
-        System.out.println("Running demoTesting2 ###########################################################");
+        log.info("running demoTesting2");
         assertEquals("s", ts.simpleTestResult());
     }
 

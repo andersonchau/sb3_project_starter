@@ -5,6 +5,7 @@ import ac.proj.projectStarger.service.object.MVCTestRespDTO;
 import ac.proj.util.FileLocType;
 import ac.proj.util.ProjectFileUtils;
 import ac.proj.util.ReportUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -12,6 +13,7 @@ import java.util.*;
 
 import static java.util.Map.entry;
 @Service
+@Slf4j
 public class TestingService {
     // Demonstrate How to retrieve file in app/src/main/resources i.e. /WEB-INF/resources in jar or war
     public void testRetrieveFile() {
@@ -49,6 +51,7 @@ public class TestingService {
     }
 
     public MVCTestRespDTO mvcTestIncrement(MVCTestRequestDTO req) {
+        log.info("mvcTestIncrement called");
         MVCTestRespDTO resp = new MVCTestRespDTO();
         resp.setOutputValue(req.getInputValue()+1);
         resp.setResult("OK");

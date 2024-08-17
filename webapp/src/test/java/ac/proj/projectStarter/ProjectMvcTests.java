@@ -44,5 +44,6 @@ public class ProjectMvcTests {
                         .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())
                         .andExpect(jsonPath("$.outputValue").value(2));
+
     }
 }
