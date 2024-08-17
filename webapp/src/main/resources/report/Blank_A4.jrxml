@@ -1,0 +1,50 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="Blank_A4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<query language="sql"><![CDATA[]]></query>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="ea5ad4df-1968-4eb3-9938-64429835fb0a" x="230" y="30" width="100" height="30">
+			<text><![CDATA[$P{reportTitle}]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="90" splitType="Stretch">
+		<element kind="staticText" uuid="941d14e7-136f-49f3-866c-f8717520c781" x="30" y="0" width="100" height="30">
+			<text><![CDATA[Enrolment Ref. No.]]></text>
+		</element>
+		<element kind="staticText" uuid="838a012c-0b35-4974-b852-4365193a1c4f" x="130" y="0" width="100" height="30">
+			<text><![CDATA[Name]]></text>
+		</element>
+		<element kind="staticText" uuid="dd5c2386-9fc5-47f0-8103-de2e2f47aa1f" x="230" y="0" width="100" height="30">
+			<text><![CDATA[Enrolment Date]]></text>
+		</element>
+		<element kind="staticText" uuid="41cf7564-5d7f-4f86-b92e-580ec51b8b7c" x="330" y="0" width="100" height="30">
+			<text><![CDATA[No. of Seats]]></text>
+		</element>
+		<element kind="staticText" uuid="6a3d46fb-da59-4a5d-b38f-23f2989c56f5" x="0" y="0" width="30" height="30">
+			<text><![CDATA[No]]></text>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<element kind="textField" uuid="e5a04ee9-83fe-407c-b1d1-92106557f19a" x="0" y="0" width="30" height="30">
+				<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+			</element>
+			<element kind="textField" uuid="83386686-9f89-4f85-8929-6af3632fac79" x="30" y="0" width="100" height="30">
+				<expression><![CDATA[$F{appointRefNo}]]></expression>
+			</element>
+			<element kind="textField" uuid="c1e6a688-a907-4961-85aa-134eb42e1018" x="130" y="0" width="100" height="30">
+				<expression><![CDATA[$F{applicantName}]]></expression>
+			</element>
+			<element kind="staticText" uuid="097f7ed1-bceb-41e2-9350-71c52808567e" x="230" y="0" width="100" height="30">
+				<text><![CDATA[$F{enrolDate}]]></text>
+			</element>
+			<element kind="staticText" uuid="6e3ca43e-79ee-4f7c-b971-ff3a8940d281" x="330" y="0" width="100" height="30">
+				<text><![CDATA[$F{numSeat}]]></text>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

@@ -1,0 +1,48 @@
+System notes :
+
+================================================================================
+1. Multi-module creation :
+-> webapp (application) (cron app...)
+-> core (application related, but holding business logics)
+-> base ( more like library, reusable code e.g. report utils, JSON utils, Date Utils, Annotation, Security code )
+
+POM structure :
+Parent pom :
+- <packaging>pom</packaging>
+- parent to spring boot parent
+- <modules><module>base</module><module>core</module></modules>
+
+child POM :
+- <packaging>jar</packaging> for with mnain
+- <parent> point to same <artifactId>&<version>&<grouopId>
+- webapp add dependency to core , core add dependency to interface.
+- only  <artifactId>spring-boot-maven-plugin</artifactId> ... with main()
+================================================================================
+2. @SpringBootTest :
+- execute a particular test case, using mvn command
+- execute a particular group of test case, using mvn command
+- execute all test cases
+- mockMVC test example
+- assert()
+-
+- (TODO) run test as CI/CD steps
+================================================================================
+3. Cache :
+- cache read,
+- cache update strategies
+- API cache header
+================================================================================
+4. Annotation
+
+================================================================================
+5. MQ
+================================================================================
+6. CI/CD
+================================================================================
+7. MongoDB
+================================================================================
+8. Advanced JPA(Query DSL)
+================================================================================
+9.
+
+

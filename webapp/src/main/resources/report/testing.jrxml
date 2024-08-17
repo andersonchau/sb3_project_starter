@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.3.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="testing" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5218e836-37a5-4507-872f-6d980f671a9e">
+	<parameter name="reportTitle" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="num" class="java.lang.Integer"/>
+	<field name="appointRefNo" class="java.lang.String"/>
+	<field name="applicantName" class="java.lang.String"/>
+	<field name="enrolDate" class="java.sql.Date"/>
+	<field name="numSeat" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="227" y="20" width="100" height="30" uuid="d344490e-faf6-4d1c-bc5a-64f0f38a688f"/>
+				<textFieldExpression><![CDATA[$P{reportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="30" uuid="144458e8-e7fd-4158-bd0b-d7ffc055d3ee"/>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="100" height="30" uuid="1be4064c-c1b9-4e48-809c-1411ebc18df9"/>
+				<text><![CDATA[Reference Num.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="100" height="30" uuid="a4ec04c4-4818-4c6b-8ecc-87883296e748"/>
+				<text><![CDATA[Applicant Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="100" height="30" uuid="f12497ab-7326-4c6e-9329-8313c72d5186"/>
+				<text><![CDATA[Apply Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="100" height="30" uuid="068af334-80b8-4739-b781-c46ddc54b9a2"/>
+				<text><![CDATA[No. of Seats]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="30" uuid="8c7f6183-91fa-49a1-8453-b9af1dcb1852"/>
+				<textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="100" height="30" uuid="2123b58f-fcaa-41c4-b1a5-1b12656bebfb"/>
+				<textFieldExpression><![CDATA[$F{appointRefNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="100" height="30" uuid="8f11be92-d2c0-4123-aa99-a1ae1c141b65"/>
+				<textFieldExpression><![CDATA[$F{applicantName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="100" height="30" uuid="887bb468-387c-4390-8d4b-59485dd47523"/>
+				<textFieldExpression><![CDATA[$F{enrolDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="100" height="30" uuid="9347cb64-39cb-4210-8376-eadb3f59f1f3"/>
+				<textFieldExpression><![CDATA[$F{numSeat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
