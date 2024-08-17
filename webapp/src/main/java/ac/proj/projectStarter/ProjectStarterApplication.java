@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 //@ComponentScan({"com.my.package.first","com.my.package.second"})
 @SpringBootApplication
 //@ComponentScan(basePackageClasses = {TestingService.class})
-@ComponentScan({"ac.proj.projectStarter.service.inf","ac.proj.projectStarter.rest"})
+@ComponentScan({"ac.proj.projectStarter.service.inf","ac.proj.projectStarter.rest","ac.proj.projectStarter"})
 public class ProjectStarterApplication {
 
 	public static void main(String[] args) {

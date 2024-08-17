@@ -42,5 +42,8 @@ public class TestingService {
         }
     }
 
+    public String simpleTestResult() {
+        return "s";
+    }
 
 }
