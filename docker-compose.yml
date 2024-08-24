@@ -1,0 +1,29 @@
+services:
+    mysqldb:
+        container_name: mysqldb
+        # build: ./mysql_docker # user the Dockerfile in ./mysql_docker/ 
+        image: mysql # 
+        #restart: unless-stopped #
+        env_file: 
+            - ./docker_var.env # .env file defines the $ENVIRONMENT_VARIABLE ( better practices ) 
+        environment:
+            - MYSQL_ROOT_PASSWORD=Morning2 # Create root's password, Remember you have to define root's user password during MySQL Installation
+            - MYSQL_DATABASE=default_db # (optional)first DB schema created  
+        ports:
+            - 3306:3306
+        volumes:
+            - C:/docker_volume/mysql:/var/lib/mysql
+            - ./docker_info/init-database.sql:/docker-entrypoint-initdb.d/setup.sql
+    #sb_app: # service name is sb_app
+    #    container_name: sb_app
+    #    depends_on:
+    #        - mysqldb
+    #    build: ./sb_app_docker # use ./Dockerfile to build image sb_app_img , don't know why 
+    #              # context: ./ 
+    #              # dockerfile: DockerFile 
+    #              # does not work
+    #    env_file: ./.env
+    #   image: sb_app_imge 
+    #    ports:
+    #        - $SPRING_HOST_PORT:$SPRING_CONTAINER_PORT 
+  

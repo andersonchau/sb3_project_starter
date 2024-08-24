@@ -1,8 +1,8 @@
-package ac.proj.projectStarger.service.object;
+package ac.proj.projectStarger.service.object.report.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import java.sql.Date;
 @Data
 @AllArgsConstructor

@@ -1,0 +1,28 @@
+01:06:15.355 [main] INFO  a.p.projectStarter.ProjectMvcTests - Starting ProjectMvcTests using Java 17.0.8.1 with PID 12964 (started by achau in C:\Users\achau\Documents\GitHub\sb3_project_starter\webapp)
+01:06:15.369 [main] INFO  a.p.projectStarter.ProjectMvcTests - No active profile set, falling back to 1 default profile: "default"
+01:06:16.720 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+01:06:16.720 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+01:06:16.720 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+01:06:16.751 [main] INFO  a.p.projectStarter.ProjectMvcTests - Started ProjectMvcTests in 2.036 seconds (process running for 3.403)
+01:06:17.770 [main] INFO  a.p.p.service.inf.TestingService - mvcTestIncrement called
+01:06:17.896 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [ac.proj.projectStarter.ProjectTests]: ProjectTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+01:06:17.911 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration ac.proj.projectStarter.ProjectStarterApplication for test class ac.proj.projectStarter.ProjectTests
+01:06:17.959 [main] INFO  ac.proj.projectStarter.ProjectTests - Starting ProjectTests using Java 17.0.8.1 with PID 12964 (started by achau in C:\Users\achau\Documents\GitHub\sb3_project_starter\webapp)
+01:06:17.959 [main] INFO  ac.proj.projectStarter.ProjectTests - No active profile set, falling back to 1 default profile: "default"
+01:06:18.341 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+01:06:18.357 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+01:06:18.671 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+01:06:18.969 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:eacb6ead-0341-42c3-a497-7423b3adcac5 user=SA
+01:06:18.985 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+01:06:19.064 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+01:06:19.143 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+01:06:19.222 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+01:06:19.388 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+01:06:19.828 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+01:06:19.844 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+01:06:20.000 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+01:06:20.236 [main] INFO  ac.proj.projectStarter.ProjectTests - Started ProjectTests in 2.309 seconds (process running for 6.886)
+01:06:20.236 [main] INFO  ac.proj.projectStarter.ProjectTests - testing
+01:06:20.316 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+01:06:20.316 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+01:06:20.330 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

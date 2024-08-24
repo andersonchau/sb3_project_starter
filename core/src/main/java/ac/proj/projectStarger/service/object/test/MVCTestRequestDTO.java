@@ -1,4 +1,4 @@
-package ac.proj.projectStarger.service.object;
+package ac.proj.projectStarger.service.object.test;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

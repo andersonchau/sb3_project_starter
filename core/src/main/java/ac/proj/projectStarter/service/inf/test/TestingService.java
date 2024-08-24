@@ -1,17 +1,15 @@
-package ac.proj.projectStarter.service.inf;
-import ac.proj.projectStarger.service.object.EnrolmentReportDTO;
-import ac.proj.projectStarger.service.object.MVCTestRequestDTO;
-import ac.proj.projectStarger.service.object.MVCTestRespDTO;
+package ac.proj.projectStarter.service.inf.test;
+import ac.proj.projectStarger.service.object.report.dto.EnrolmentReportDTO;
+import ac.proj.projectStarger.service.object.test.MVCTestRequestDTO;
+import ac.proj.projectStarger.service.object.test.MVCTestRespDTO;
 import ac.proj.util.FileLocType;
 import ac.proj.util.ProjectFileUtils;
 import ac.proj.util.ReportUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.util.*;
 
-import static java.util.Map.entry;
 @Service
 @Slf4j
 public class TestingService {
@@ -49,6 +47,7 @@ public class TestingService {
     public String simpleTestResult() {
         return "s";
     }
+
 
     public MVCTestRespDTO mvcTestIncrement(MVCTestRequestDTO req) {
         log.info("mvcTestIncrement called");

@@ -8,4 +8,23 @@
 3. @SpringBootTest usage (ProjectTests.java, ProjectMvcTests.java)
 4. Add logback configuration support (resource/logback-spring.xml)
 
-## Features To be Implemented 
+
+## Features To be Implemented
+1. AOP ( CSV to object , Validator ) 
+2. Caching    
+3. Quartz Scheduler + Spring Batch
+4. GraphQL
+5. JPA QueryDSL  
+5. RabbitMQ read / write 
+6. Multipart file upload 
+7. Excel Generation 
+8. Microservices 
+9. MongoDB Access.
+10. Solr
+11. Apache POI
+12. Crystal Report 
+13. iText
+14. OAuth2 Login with Google. 
+15. Spring Security Login with JWT Token 
+16. Thyemeleaf
+17. 
