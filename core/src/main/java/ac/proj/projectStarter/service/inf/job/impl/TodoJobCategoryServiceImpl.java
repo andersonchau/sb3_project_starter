@@ -17,7 +17,10 @@ public class TodoJobCategoryServiceImpl implements TodoJobCategoryService {
 
     public void testAccessData() {
         List<TodoJobCategory> jobCatList =  jobCategoryRepo.findAll();
-        log.info(jobCatList.toString());
+        for(TodoJobCategory tc : jobCatList ) {
+            log.info(tc.toString());
+        }
+
     }
 
 

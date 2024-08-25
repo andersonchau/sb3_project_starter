@@ -1,6 +1,8 @@
 package ac.proj.projectStarter;
 
 
+import ac.proj.projectStarter.repo.todo.TodoJobCategoryRepository;
+import ac.proj.projectStarter.service.inf.job.TodoJobService;
 import ac.proj.projectStarter.service.inf.test.TestingService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProjectTests {
     @Autowired
     TestingService ts;
+
+    @Autowired
+    TodoJobCategoryRepository todoCatRepo;
     // for mvn test to run :
     // (1) this class must be in /src/java/test/
     // (2) class name : xxxTests
@@ -34,11 +39,17 @@ public class ProjectTests {
         //System.out.println("Running demoTesting1 ###########################################################");
         // assertEquals("s", "x"); // trigger failed case
     }
+
     @Test
     void demoTesting2() {
         log.info("running demoTesting2");
         assertEquals("s", ts.simpleTestResult());
     }
 
-    
+    @Test
+    void testDataAccess() {
+        todoCatRepo.findAll();
+    }
 }
+
+    

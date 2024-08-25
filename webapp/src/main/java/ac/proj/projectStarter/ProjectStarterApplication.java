@@ -13,12 +13,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //		"ac.proj.projectStarter.service.inf"})
 //@ComponentScan({"com.my.package.first","com.my.package.second"})
 @SpringBootApplication
-//@ComponentScan(basePackageClasses = {TestingService.class})
+// find @Service/@Controller ...
 @ComponentScan({"ac.proj.projectStarter.service.inf","ac.proj.projectStarter.rest","ac.proj.projectStarter"})
 @EnableJpaAuditing
-@EntityScan({ "com.nexify.naf.entity", "hk.gov.hkpf.ears.online" })
+@EntityScan({ "ac.proj.projectStarter.domain"}) // find @Entity classes
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"ac.proj.projectStarter.repo.todo"})
+@EnableJpaRepositories(basePackages = {"ac.proj.projectStarter.repo.todo"}) // find @Repository
 public class ProjectStarterApplication {
 
 	public static void main(String[] args) {

@@ -1,6 +1,7 @@
 package ac.proj.projectStarter.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +17,7 @@ primary key(cat_id)
  */
 @Entity
 @Table(name = "t_todo_job_category")
+@Data
 public class TodoJobCategory {
 // Useful reference : https://stackoverflow.com/questions/30334044/hibernate-same-table-parent-child-relation
 
@@ -37,7 +39,8 @@ public class TodoJobCategory {
 
     // @OneToMany -> (1) define Cardinality (2) Declare that I am at the one (parent) side
     // mappedBy -> tell Hibernate to use remote_table.parent_id to join this table's PK for SQL
-    @OneToMany(mappedBy="parent_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval=true)
-    private Set<TodoJobCategory> children = new HashSet<TodoJobCategory>();
+    // note that it is parent (the Java field name, not DB field name)
+    @OneToMany(mappedBy="parent", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval=true)
+    private Set<TodoJobCategory> children;
 
 }
