@@ -1,4 +1,4 @@
-package ac.proj.projectStarger.service.object.todo;
+package ac.proj.projectStarter.object.todo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

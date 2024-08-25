@@ -1,4 +1,4 @@
-package ac.proj.projectStarger.service.object.report.dto;
+package ac.proj.projectStarter.object.report.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

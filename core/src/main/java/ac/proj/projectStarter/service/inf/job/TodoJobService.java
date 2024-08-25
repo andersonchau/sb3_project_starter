@@ -1,8 +1,8 @@
 package ac.proj.projectStarter.service.inf.job;
 
-import ac.proj.projectStarger.service.object.todo.JobStatus;
-import ac.proj.projectStarger.service.object.todo.TodoJobDTO;
-import ac.proj.projectStarger.service.object.todo.TodoJobSearchReq;
+import ac.proj.projectStarter.object.todo.JobStatus;
+import ac.proj.projectStarter.object.todo.TodoJobDTO;
+import ac.proj.projectStarter.object.todo.TodoJobSearchReq;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
 package ac.proj.projectStarter;
 
 
-import ac.proj.projectStarger.service.object.test.MVCTestRequestDTO;
+import ac.proj.projectStarter.object.test.MVCTestRequestDTO;
 import ac.proj.projectStarter.rest.test.TestingResultController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

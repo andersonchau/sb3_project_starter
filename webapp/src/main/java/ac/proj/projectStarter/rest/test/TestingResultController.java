@@ -1,7 +1,7 @@
 package ac.proj.projectStarter.rest.test;
 
-import ac.proj.projectStarger.service.object.test.MVCTestRequestDTO;
-import ac.proj.projectStarger.service.object.test.MVCTestRespDTO;
+import ac.proj.projectStarter.object.test.MVCTestRequestDTO;
+import ac.proj.projectStarter.object.test.MVCTestRespDTO;
 import ac.proj.projectStarter.service.inf.test.TestingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

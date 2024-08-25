@@ -1,7 +1,7 @@
 package ac.proj.projectStarter.service.inf.test;
-import ac.proj.projectStarger.service.object.report.dto.EnrolmentReportDTO;
-import ac.proj.projectStarger.service.object.test.MVCTestRequestDTO;
-import ac.proj.projectStarger.service.object.test.MVCTestRespDTO;
+import ac.proj.projectStarter.object.report.dto.EnrolmentReportDTO;
+import ac.proj.projectStarter.object.test.MVCTestRequestDTO;
+import ac.proj.projectStarter.object.test.MVCTestRespDTO;
 import ac.proj.util.FileLocType;
 import ac.proj.util.ProjectFileUtils;
 import ac.proj.util.ReportUtils;
