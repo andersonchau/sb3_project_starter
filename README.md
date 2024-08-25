@@ -2,6 +2,11 @@
 1. Starter project template (multi MVN modules) using Spring Boot 3 and Java 17
 2. Some common features Implemented
 
+# Building and Running Information
+1. maven 3.9 , RedHat OpenJDK 17 
+2. Building : mvn -Dmaven.test.skip=true clean package ; docker-compose up ;
+3. 
+
 ## Features Implemented 
 1. Using jrxml to generate PDF report using Jasper Report Library(ReportUtils.java)
 2. Load file content from war/jar code classpath (ProjectFileUtils.java)
@@ -27,4 +32,3 @@
 14. OAuth2 Login with Google. 
 15. Spring Security Login with JWT Token 
 16. Thyemeleaf
-17. 
