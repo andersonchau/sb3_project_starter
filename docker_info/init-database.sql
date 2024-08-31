@@ -11,16 +11,13 @@ use todo_db;
 CREATE TABLE t_todo_job_category (
 
   cat_id BIGINT NOT NULL AUTO_INCREMENT,
-  parent_id BIGINT NULL,
   name VARCHAR(200) DEFAULT NULL,
-  CONSTRAINT fk_todo_job_category_parent FOREIGN KEY (parent_id) REFERENCES t_todo_job_category(cat_id),
   primary key(cat_id)
 );
 
 
 CREATE TABLE t_todo_job (
   job_id BIGINT NOT NULL AUTO_INCREMENT,
-  parent_job_id BIGINT NULL,
   cat_id BIGINT NOT NULL,
   job_summary VARCHAR(100) NOT NULL,
   job_details VARCHAR(1000) NOT NULL,
@@ -31,10 +28,7 @@ CREATE TABLE t_todo_job (
   CONSTRAINT fk_job_cat FOREIGN KEY (cat_id) REFERENCES t_todo_job_category(cat_id)
 );
 
-CREATE TABLE t_todo_job_dependency_map (
-  parent_job_id BIGINT NOT NULL,
-  job_id BIGINT NOT NULL
-);
+
 
 CREATE TABLE t_todo_job_tmpl (
   template_id BIGINT NOT NULL AUTO_INCREMENT,
@@ -68,3 +62,10 @@ SELECT 'Health' , cat_id FROM t_todo_job_category WHERE `name` = 'Personal';
 INSERT INTO t_todo_job_category (name,parent_id)
 SELECT 'Finance' , cat_id FROM t_todo_job_category WHERE `name` = 'Personal';
 
+INSERT INTO t_todo_job (cat_id,job_summary,job_details,deadline,`status`,importance)
+VALUES
+(1,'Reply Email' , 'Customer David asked for the product specification','2024-10-10', 1,1);
+
+INSERT INTO t_todo_job (cat_id,job_summary,job_details,deadline,`status`,importance)
+VALUES
+(2,'Print Document' , 'Print Invoice for POS of Bookstore','2024-10-10', 1,1);
