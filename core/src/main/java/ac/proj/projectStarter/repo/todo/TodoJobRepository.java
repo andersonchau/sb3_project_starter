@@ -43,15 +43,23 @@ public interface TodoJobRepository extends
     public List<TodoJobDTO> searchJobListByCategoryNameProjectionNativeSQL(@Param("catNames") List<String> categoryNames,
                                                                         @Param("jobDesc") String jobDescription );
 
-    
+    // Demo : JPQL (with LIKE and WHERE IN)
+    // Note : Need to define @ManyToOne to make it work
+    // ANSON
+    @Query( value = "SELECT j FROM TodoJob j JOIN j.jobCategory WHERE j.details LIKE CONCAT('%',:jobDesc ,'%') AND j.jobCategory.categoryName IN :catNames" )
+    public List<TodoJob> searchJobListByCategoryNameJPQL(@Param("catNames") List<String> categoryNames,
+                                                                @Param("jobDesc") String jobDescription );
+    /*
 
-    @Query(
-            value = "SELECT j FROM TodoJob j JOIN TodoJobCategory c WHERE c.categoryName = :catName " )
-    public List<TodoJob> getJobListByCategoryNameIgnoreCaseJPQL(@Param("catName") String inputCatName );
+     */
+    // Demo : JPQL with DTO projection
+    // see more : https://stackoverflow.com/questions/73960617/how-to-pass-a-select-statement-as-an-argument-to-a-constructor-expression-in-jpq for some output field variation
+    // seems there is problem here : https://discourse.hibernate.org/t/possible-regresssion-in-semanticquerybuilder-6-4-4-6-5-2/9612
+    @Query( value = "SELECT new ac.proj.projectStarter.object.todo.TodoJobDTO(j.description,j.deadline,j.getStatusIntValue() ,j.jobCategory.categoryName) " +
+            " FROM TodoJob j JOIN j.jobCategory " +
+            "WHERE j.details LIKE CONCAT('%',:jobDesc ,'%') AND j.jobCategory.categoryName IN :catNames" )
+    public List<TodoJobDTO> searchJobListByCategoryNameIgnoreCaseJPQL(@Param("catName") String inputCatName );
 
-    @Query(
-            value = "SELECT j FROM TodoJob j JOIN TodoJobCategory c WHERE c.categoryName LIKE CONCAT ('%', :catName , '%')" )
-    public List<TodoJob> searchJobListByCategoryNameIgnoreCaseJPQL(@Param("catName") String inputCatName );
 
 
 }

@@ -74,5 +74,10 @@ public class TodoJob {
     @Enumerated(EnumType.ORDINAL)
     Importance importance;
 
+    public Integer getStatusIntValue(){
+        return status.getValue();
+    }
+
+
 
 }

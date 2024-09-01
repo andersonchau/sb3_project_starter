@@ -37,6 +37,10 @@ public class JPADemoController {
         List<TodoJobDTO> jobDTOList = todoJobRepo.searchJobListByCategoryNameProjectionNativeSQL(Arrays.asList("Work", "Personal"),"Customer");
         DebugUtils.printList(jobDTOList, "searchJobListByCategoryNameProjectionNativeSQL");
 
+
+        // 2. JPQL
+        List<TodoJob> jobList2 = todoJobRepo.searchJobListByCategoryNameJPQL(Arrays.asList("Work", "Personal"),"Customer");
+        DebugUtils.printList(jobList2, "searchJobListByCategoryNameJPQL");
         return "OK";
     }
 }

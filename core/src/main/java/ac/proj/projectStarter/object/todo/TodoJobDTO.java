@@ -9,15 +9,21 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+//@AllArgsConstructor
 @ToString
 public class TodoJobDTO {
     String jobSummary;
-    //String JobDescription;
     LocalDate deadLineDate;
-    //JobStatus status; // TODO : find ways to map to Enum
     Integer status;
     String categoryName;
 
+    public TodoJobDTO(String jobSummary, LocalDate deadLineDate, Integer status, String categoryName) {
+        this.jobSummary = jobSummary;
+        this.deadLineDate = deadLineDate;
+        this.status = status;
+        this.categoryName = categoryName;
+    }
 }
+
+
