@@ -68,4 +68,13 @@ VALUES
 
 INSERT INTO t_todo_job (cat_id,job_summary,job_details,deadline,`status`,importance)
 VALUES
-(2,'Print Document' , 'Print Invoice for POS of Bookstore','2024-10-10', 1,1);
+(1,'Print Document' , 'Print Invoice for POS of Bookstore','2024-10-11', 1,1);
+
+INSERT INTO t_todo_job (cat_id,job_summary,job_details,deadline,`status`,importance)
+VALUES
+(1,'Clean Desk' , 'None','2024-09-11', 1,1);
+
+INSERT INTO t_todo_job (cat_id,job_summary,job_details,deadline,`status`,importance)
+VALUES
+(1,'Draft Meeting Minutes' , 'To Hand in Mr. Stone','2024-09-11', 1,1);
+

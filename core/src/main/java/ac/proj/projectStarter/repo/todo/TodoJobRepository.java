@@ -4,11 +4,14 @@ import ac.proj.projectStarter.domain.TodoJob;
 import ac.proj.projectStarter.domain.TodoJobCategory;
 import ac.proj.projectStarter.object.todo.JobStatus;
 import ac.proj.projectStarter.object.todo.TodoJobDTO;
+import ac.proj.projectStarter.object.todo.TodoJobSearchReq;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,7 +49,8 @@ public interface TodoJobRepository extends
     // Demo : JPQL (with LIKE and WHERE IN)
     // Note : Need to define @ManyToOne to make it work
     // ANSON
-    @Query( value = "SELECT j FROM TodoJob j JOIN j.jobCategory WHERE j.details LIKE CONCAT('%',:jobDesc ,'%') AND j.jobCategory.categoryName IN :catNames" )
+    @Query( value = "SELECT j FROM TodoJob j JOIN j.jobCategory " +
+            "WHERE j.details LIKE CONCAT('%',:jobDesc ,'%') AND j.jobCategory.categoryName IN :catNames" )
     public List<TodoJob> searchJobListByCategoryNameJPQL(@Param("catNames") List<String> categoryNames,
                                                                 @Param("jobDesc") String jobDescription );
     /*
@@ -54,7 +58,7 @@ public interface TodoJobRepository extends
      */
     // Demo : JPQL with DTO projection
     // see more : https://stackoverflow.com/questions/73960617/how-to-pass-a-select-statement-as-an-argument-to-a-constructor-expression-in-jpq for some output field variation
-    // seems there is problem here : https://discourse.hibernate.org/t/possible-regresssion-in-semanticquerybuilder-6-4-4-6-5-2/9612
+    // hibernate library error here : https://discourse.hibernate.org/t/possible-regresssion-in-semanticquerybuilder-6-4-4-6-5-2/9612
     /*
     @Query( value = "SELECT new ac.proj.projectStarter.object.todo.TodoJobDTO(j.description,j.deadline,j.getStatusIntValue() ,j.jobCategory.categoryName) " +
             " FROM TodoJob j JOIN j.jobCategory " +
@@ -62,5 +66,10 @@ public interface TodoJobRepository extends
     public List<TodoJobDTO> searchJobListByCategoryNameIgnoreCaseJPQL(@Param("catName") String inputCatName );
     */
 
-
+    // Demo : JPQL + SpeL + Paging and Sorting
+    // Note : this is not a good example for searching, better use JPA Specification or QueryDSL which generate dynamic query
+    @Query( value = "SELECT j FROM TodoJob j JOIN j.jobCategory " +
+            " WHERE ( ( :#{#searchReq.jobDetails} is null ) or (j.details LIKE CONCAT('%',:#{#searchReq.jobDetails} ,'%') ) )" +
+            " AND j.jobCategory.categoryName IN :#{#searchReq.jobCatNames } " )
+    public List<TodoJob> searchJobListByCategoryNamePagingJPQL(@Param("searchReq") TodoJobSearchReq req, Pageable p);
 }

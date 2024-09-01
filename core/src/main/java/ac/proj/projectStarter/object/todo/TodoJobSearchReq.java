@@ -2,17 +2,20 @@ package ac.proj.projectStarter.object.todo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class TodoJobSearchReq {
     LocalDate deadlineStart;
     LocalDate deadlineEnd;
-    JobStatus status;
-    Integer jobCategoryId;
-    String jobDescription;
-    String jobName;
-
+    Integer status;
+    List<String> jobCatNames;
+    String jobSummary;
+    String jobDetails;
+    // Assume Paging and sorting information here.
 }
