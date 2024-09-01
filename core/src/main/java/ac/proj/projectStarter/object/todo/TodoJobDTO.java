@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 public class TodoJobDTO {
     String jobSummary;
     //String JobDescription;
-    LocalDateTime deadLineDate;
+    LocalDate deadLineDate;
     //JobStatus status; // TODO : find ways to map to Enum
     Integer status;
     String categoryName;

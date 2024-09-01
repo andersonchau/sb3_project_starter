@@ -24,17 +24,26 @@ public interface TodoJobRepository extends
 //https://medium.com/@bubu.tripathy/best-practices-creating-repository-interfaces-with-jpa-d904bee64397
 
     // https://blog.csdn.net/isyoungboy/article/details/87878685
-    // Demo :  nativeSQL + Param + LIKE usage with Param
+    // Demo :  nativeSQL + Param + LIKE usage with Param + with WHERE IN <List>
     // Note : if not using tjd.* but * => duplicate field of the join columns (cat_id)
-    // Note : According to Hibernate log : This query will also induce 
+    // Note : According to Hibernate log : This query will also induce N+1 problem
     @Query(
         value = "SELECT tdj.* " +
                 " FROM t_todo_job tdj " +
                 " INNER JOIN t_todo_job_category tdjc ON tdjc.cat_id = tdj.cat_id" +
-                " WHERE tdjc.name LIKE  CONCAT ( '%', :catName , '%' ) ",
+                " WHERE tdj.job_details LIKE  CONCAT ( '%', :jobDesc , '%' ) " +
+                " AND tdjc.name IN (:catNames)",
         nativeQuery = true)
-    public List<TodoJob> searchJobListByCategoryNameWithProjectionNativeSQL(@Param("catName") String categoryName);
+    public List<TodoJob> searchJobListByCategoryNameNativeSQL(@Param("catNames") List<String> categoryNames,
+                                                              @Param("jobDesc") String jobDescription );
 
+    // Demo :  nativeSQL + named query + DTO projection
+    // Note : this does not have N+1 problem because we are just accessing the DTO for category name field, which is not a managed @Entity object
+    @Query( name = "searchByJobCatAndDetailsNamedQuery" , nativeQuery = true )
+    public List<TodoJobDTO> searchJobListByCategoryNameProjectionNativeSQL(@Param("catNames") List<String> categoryNames,
+                                                                        @Param("jobDesc") String jobDescription );
+
+    
 
     @Query(
             value = "SELECT j FROM TodoJob j JOIN TodoJobCategory c WHERE c.categoryName = :catName " )

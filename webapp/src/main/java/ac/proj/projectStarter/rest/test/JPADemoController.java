@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -29,8 +30,12 @@ public class JPADemoController {
     public String get() {
         // 1. Some JPARepository functions
 
-        List<TodoJob> jobList = todoJobRepo.searchJobListByCategoryNameWithProjectionNativeSQL("work");
-        DebugUtils.printList(jobList, "searchJobListByCategoryNameWithProjectionNativeSQL");
+        List<TodoJob> jobList = todoJobRepo.searchJobListByCategoryNameNativeSQL(Arrays.asList("Work", "Personal"),"Customer");
+        DebugUtils.printList(jobList, "searchJobListByCategoryNameNativeSQL");
+
+        // 2. named query + Projection
+        List<TodoJobDTO> jobDTOList = todoJobRepo.searchJobListByCategoryNameProjectionNativeSQL(Arrays.asList("Work", "Personal"),"Customer");
+        DebugUtils.printList(jobDTOList, "searchJobListByCategoryNameProjectionNativeSQL");
 
         return "OK";
     }

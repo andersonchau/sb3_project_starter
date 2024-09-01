@@ -2,26 +2,50 @@ package ac.proj.projectStarter.domain;
 
 import ac.proj.projectStarter.object.todo.Importance;
 import ac.proj.projectStarter.object.todo.JobStatus;
+import ac.proj.projectStarter.object.todo.TodoJobDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Entity
+
 
 /*
-CREATE TABLE t_todo_job (
-	job_id BIGINT NOT NULL AUTO_INCREMENT ,
-	cat_id BIGINT NOT NULL,
-	job_desc VARCHAR(100) NOT NULL,
-	job_details VARCHAR(1000) NOT NULL,
-	deadline DATE NULL,
-	status INT NOT NULL,
-    importance INT NOT NULL DEFAULT 0,
-	primary_key(job_id),
-	CONSTRAINT fk_job_cat FOREIGN KEY (cat_id) REFERENCES t_todo_job_category(cat_id),
-);
- */
-@Entity
+String jobSummary;
+LocalDate deadLineDate;
+Integer status;
+String categoryName;
+
+
+*/
+@NamedNativeQuery(
+        name = "searchByJobCatAndDetailsNamedQuery",
+        query =
+                "SELECT tdj.job_summary AS jobSummary, " +
+                        " tdj.deadline AS deadLineDate, " +
+                        " tdj.status As status," +
+                        " tdjc.name as categoryName " +
+                        " FROM t_todo_job tdj " +
+                        " INNER JOIN t_todo_job_category tdjc ON tdjc.cat_id = tdj.cat_id" +
+                        " WHERE tdj.job_details LIKE  CONCAT ( '%', :jobDesc , '%' ) " +
+                        " AND tdjc.name IN (:catNames)",
+        resultSetMapping = "job_to_dto_map"
+)
+@SqlResultSetMapping(
+        name = "job_to_dto_map",
+        classes = @ConstructorResult(
+                targetClass = TodoJobDTO.class,
+                columns = {
+                        @ColumnResult(name = "jobSummary", type = String.class),
+                        @ColumnResult(name = "deadLineDate", type = LocalDate.class),
+                        @ColumnResult(name = "status", type = Integer.class),
+                        @ColumnResult(name = "categoryName", type = String.class),
+                }
+        )
+)
 @Table(name = "t_todo_job")
 @Data
 @ToString
