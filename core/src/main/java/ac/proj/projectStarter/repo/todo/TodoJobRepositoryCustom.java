@@ -10,5 +10,5 @@ public interface TodoJobRepositoryCustom {
 
 
 
-
+    List<TodoJob> searchTodoJobQueryDSL();
 }

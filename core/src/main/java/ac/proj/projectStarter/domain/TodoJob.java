@@ -10,14 +10,12 @@ import lombok.ToString;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
 
 
 /*
 String jobSummary;
 LocalDate deadLineDate;
 Integer status;
-String categoryName;
 
 
 */
@@ -49,6 +47,7 @@ String categoryName;
 @Table(name = "t_todo_job")
 @Data
 @ToString
+@Entity
 public class TodoJob {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,15 +67,12 @@ public class TodoJob {
     LocalDate deadline;
 
     // Translated to 1,2,3.... , EnumType.STRING to String
-    @Enumerated(EnumType.ORDINAL)
-    JobStatus status;
+    //@Enumerated(EnumType.ORDINAL)
+    Integer status;
 
     @Enumerated(EnumType.ORDINAL)
     Importance importance;
 
-    public Integer getStatusIntValue(){
-        return status.getValue();
-    }
 
 
 

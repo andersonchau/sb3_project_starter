@@ -6,22 +6,24 @@ import ac.proj.projectStarter.object.todo.JobStatus;
 import ac.proj.projectStarter.object.todo.TodoJobDTO;
 import ac.proj.projectStarter.object.todo.TodoJobSearchReq;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-
+@Repository
 public interface TodoJobRepository extends
         JpaRepository<TodoJob,Long>,
         JpaSpecificationExecutor<TodoJob>,
         QuerydslPredicateExecutor<TodoJob>,
-        TodoJobCategoryRepositoryCustom
+        TodoJobRepositoryCustom
 {
 //https://docs.spring.io/spring-data/jpa/reference/repositories/custom-implementations.html
 //https://medium.com/@bubu.tripathy/best-practices-creating-repository-interfaces-with-jpa-d904bee64397
@@ -48,7 +50,7 @@ public interface TodoJobRepository extends
 
     // Demo : JPQL (with LIKE and WHERE IN)
     // Note : Need to define @ManyToOne to make it work
-    // ANSON
+
     @Query( value = "SELECT j FROM TodoJob j JOIN j.jobCategory " +
             "WHERE j.details LIKE CONCAT('%',:jobDesc ,'%') AND j.jobCategory.categoryName IN :catNames" )
     public List<TodoJob> searchJobListByCategoryNameJPQL(@Param("catNames") List<String> categoryNames,
@@ -68,8 +70,39 @@ public interface TodoJobRepository extends
 
     // Demo : JPQL + SpeL + Paging and Sorting
     // Note : this is not a good example for searching, better use JPA Specification or QueryDSL which generate dynamic query
+    // Note : can returnabel Page<> instead of list
     @Query( value = "SELECT j FROM TodoJob j JOIN j.jobCategory " +
             " WHERE ( ( :#{#searchReq.jobDetails} is null ) or (j.details LIKE CONCAT('%',:#{#searchReq.jobDetails} ,'%') ) )" +
             " AND j.jobCategory.categoryName IN :#{#searchReq.jobCatNames } " )
     public List<TodoJob> searchJobListByCategoryNamePagingJPQL(@Param("searchReq") TodoJobSearchReq req, Pageable p);
+
+
+
+    interface JPASpecs {
+    /*
+        static Specification<TodoJob> byStatus(Integer status) {
+            return (root, query, builder) ->
+                    builder.equal(root.get(TodoJob_.status), status);
+        }
+
+              static Specification<TodoJob> byReviewLike(String reviewPattern) {
+            return (root, query, builder) ->
+                    builder.like(root.get(PostComment_.review), reviewPattern);
+        }
+
+        static Specification<PostComment> byVotesGreaterThanEqual(int votes) {
+            return (root, query, builder) ->
+                    builder.greaterThanOrEqualTo(root.get(PostComment_.votes), votes);
+        }
+
+        static Specification<PostComment> orderByCreatedOn(
+                Specification<PostComment> spec) {
+            return (root, query, builder) -> {
+                query.orderBy(builder.asc(root.get(PostComment_.createdOn)));
+                return spec.toPredicate(root, query, builder);
+            };
+        }
+
+         */
+    }
 }
