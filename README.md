@@ -15,14 +15,13 @@
 3. @SpringBootTest usage (ProjectTests.java, ProjectMvcTests.java)
 4. Add logback configuration support (resource/logback-spring.xml)
 5. JPA Native Query / JPQL
-6. 
+6. QueryDSL
 
 ## Features To be Implemented
 1. AOP ( CSV to object , Validator ) 
 2. Caching    
 3. Quartz Scheduler + Spring Batch
-4. GraphQL
-5. QueryDSL  
+4. GraphQL 
 5. RabbitMQ read / write 
 6. Multipart file upload 
 7. Excel Generation 

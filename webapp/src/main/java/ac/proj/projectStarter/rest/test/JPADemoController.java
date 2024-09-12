@@ -56,9 +56,22 @@ public class JPADemoController {
         List<TodoJob> jobList3 = todoJobRepo.searchJobListByCategoryNamePagingJPQL(searchReq,pagingInfo);
         DebugUtils.printList(jobList3, "searchJobListByCategoryNamePagingJPQL");
 
-        // 5. JPA auto generated functions
-        List<TodoJob> jobList4 = todoJobRepo.searchTodoJobQueryDSL();
-        DebugUtils.printList(jobList4, "searchTodoJobQueryDSL");
+
+
+
+        return "OK";
+    }
+
+    @GetMapping("/jpa/testing2")
+    public String get2() {
+
+        // 1. QueryDSL
+        List<TodoJob> jobList4 = todoJobRepo.searchTodoJobQueryDSL1();
+        DebugUtils.printList(jobList4, "*********** searchTodoJobQueryDSL1 ***********");
+
+        // 2. QueryDSL
+        List<TodoJob> jobList = todoJobRepo.searchTodoJobQueryDSL2();
+        DebugUtils.printList(jobList, "*********** searchTodoJobQueryDSL2 ***********");
 
 
         return "OK";

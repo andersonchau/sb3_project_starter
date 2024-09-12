@@ -10,5 +10,6 @@ public interface TodoJobRepositoryCustom {
 
 
 
-    List<TodoJob> searchTodoJobQueryDSL();
+    List<TodoJob> searchTodoJobQueryDSL1();
+    List<TodoJob> searchTodoJobQueryDSL2();
 }
