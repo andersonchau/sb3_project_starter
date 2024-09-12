@@ -7,9 +7,8 @@ import ac.proj.projectStarter.object.todo.TodoJobDTO;
 import ac.proj.projectStarter.object.todo.TodoJobSearchReq;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.Expressions;
-import com.querydsl.jpa.JPQLQuery;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.EntityManager;
@@ -17,8 +16,6 @@ import jakarta.persistence.PersistenceContext;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -28,6 +25,7 @@ import java.util.List;
 
 @Repository
 public class TodoJobRepositoryImpl implements TodoJobRepositoryCustom {
+    // Main Reference : http://querydsl.com/static/querydsl/latest/reference/html/
     /*
     Custom Method generation :
     (1) INTERFACE TodoJobRepository EXTENDS JPARepository/xxxExecutor/TodoJobRepositoryCustom
@@ -80,12 +78,17 @@ AND ( j.deadline >= "YYYY-MM-DD" AND j.deadline <= "YYYY-MM-DD" )
                                 (LocalDate.of(2020,1,1),LocalDate.of(2026,1,1) ))
                         .and(todoJob.deadline.after(LocalDate.of(2001,1,1)))
                 ).fetch();
-
+        // select(todoJob.details) return List<String>
+        // select(todoJob.details,todoJob.importance) return List<Tuple>
         return lst;
+    }
+    public List<TodoJob> searchTodoJobQueryDSL3() {
+        return null;
     }
     // Demo : QueryDSL
     // ExpressionUtils
-    public List<TodoJob> searchTodoJobQueryDSL4() {
+    // DTO Projection
+    public List<TodoJobDTO> searchTodoJobQueryDSL4() {
         QTodoJob todoJob = QTodoJob.todoJob;
         QTodoJobCategory todoJobCategory = QTodoJobCategory.todoJobCategory;
 
@@ -126,7 +129,23 @@ AND ( j.deadline >= "YYYY-MM-DD" AND j.deadline <= "YYYY-MM-DD" )
             predicates.add(todoJob.deadline.before(searchReq.getDeadlineEnd())
                     .or(todoJob.deadline.eq(searchReq.getDeadlineEnd())));
         }
-        List<TodoJob> lst = queryFactory.selectFrom(todoJob).where(ExpressionUtils.allOf(predicates)).fetch();
+        //List<TodoJob> lst = queryFactory.selectFrom(todoJob).where(ExpressionUtils.allOf(predicates)).fetch();
+        /*
+         String jobSummary;
+    LocalDate deadLineDate;
+    Integer status;
+    String categoryName;
+         */
+
+        List<TodoJobDTO> lst = queryFactory.select(Projections.constructor(TodoJobDTO.class,
+                        todoJob.details,todoJob.deadline,todoJob.status,todoJobCategory.categoryName))
+                .from(todoJob)
+                .innerJoin(todoJob.jobCategory, todoJobCategory)
+                .where(ExpressionUtils.allOf(predicates))
+                .orderBy(todoJob.jobId.desc(),todoJobCategory.categoryName.asc())
+                .offset(0)
+                .limit(10)
+                .fetch();
         return lst;
 
     }

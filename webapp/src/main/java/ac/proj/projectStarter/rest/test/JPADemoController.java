@@ -66,14 +66,15 @@ public class JPADemoController {
     public String get2() {
 
         // 1. QueryDSL
-        List<TodoJob> jobList4 = todoJobRepo.searchTodoJobQueryDSL1();
-        DebugUtils.printList(jobList4, "*********** searchTodoJobQueryDSL1 ***********");
+       // List<TodoJob> jobList4 = todoJobRepo.searchTodoJobQueryDSL1();
+       // DebugUtils.printList(jobList4, "*********** searchTodoJobQueryDSL1 ***********");
 
         // 2. QueryDSL
-        List<TodoJob> jobList = todoJobRepo.searchTodoJobQueryDSL2();
-        DebugUtils.printList(jobList, "*********** searchTodoJobQueryDSL2 ***********");
+        //List<TodoJob> jobList = todoJobRepo.searchTodoJobQueryDSL2();
+        //DebugUtils.printList(jobList, "*********** searchTodoJobQueryDSL2 ***********");
 
-
+        List<TodoJobDTO> jobList = todoJobRepo.searchTodoJobQueryDSL4();
+        DebugUtils.printList(jobList, "*********** searchTodoJobQueryDSL4 ***********");
         return "OK";
     }
 }
