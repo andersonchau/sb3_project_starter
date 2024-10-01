@@ -110,6 +110,7 @@ AND ( j.deadline >= "YYYY-MM-DD" AND j.deadline <= "YYYY-MM-DD" )
             p = ExpressionUtils.and(p,todoJobCategory.categoryName.in(searchReq.getJobCatNames()));
         }
          */
+
         // Pattern II :
         List<Predicate> predicates = new ArrayList<Predicate>();
         predicates.add( todoJob.jobId.isNotNull());

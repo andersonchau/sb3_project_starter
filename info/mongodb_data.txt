@@ -1,0 +1,46 @@
+db.createCollection("todo_job", {
+   validator: {$jsonSchema: {
+      bsonType: "object",
+      required: ["category","summary","status","importance"],
+      properties: {
+         category: {
+            bsonType: "string",
+            description: "Job Category Name"
+         },
+		 summary: {
+            bsonType: "string",
+            description: "Job Summary"
+         },
+		 deadline: {
+            bsonType: "date",
+            description: "Job Deadline"
+         },
+		 status: {
+			bsonType: "int",
+			minimum: 1, 
+			maximum: 2,
+			description: "Job Status"
+		 },
+		 importance: {
+			bsonType: "int",
+			minimum: 1,
+			maximum: 2, 
+			description: "Importance level of a job"
+		 }, 
+		 details : {
+			bsonType : "string", 
+			description : "Job Details"
+		 }
+      }
+   }}
+})
+
+db.todo_job.insertOne(
+{
+  "category": "Work",
+  "summary": "Reply Email",
+  "jobDetails": "Customer David asked for the product specification",
+  "deadline": new Date("2024-10-10"),
+  "status": 2,
+  "importance": 1
+})

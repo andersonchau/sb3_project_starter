@@ -14,8 +14,10 @@ public class DebugUtils {
         }
         if (CollectionUtils.isEmpty(myList))
             log.info( "List is Empty");
-        else
-            myList.stream().forEach((obj->log.info(obj.toString())));
+        else {
+            log.info( "List is has size {} " , myList.size());
+            myList.stream().forEach((obj -> log.info(obj.toString())));
+        }
     }
 
 }

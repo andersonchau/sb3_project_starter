@@ -1,8 +1,25 @@
 services:
+    mongodb:
+        image: mongo
+        container_name: mongodb
+        restart: always
+        command: --auth --config /etc/mongo/mongod.conf
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: adminpw
+            MONGO_INITDB_DATABASE: mydb
+            TZ: Asia/Taipei
+        volumes:
+            - ./docker_info/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+            - C:/docker_volume/mongo_config:/data/configdb
+            - C:/docker_volume/mongo:/data/db
+            - ./docker_info/mongod.conf:/etc/mongo/mongod.conf
+        ports:
+            - 27017:27017
     mysqldb:
         container_name: mysqldb
         # build: ./mysql_docker # user the Dockerfile in ./mysql_docker/ 
-        image: mysql # 
+        image: mysql #
         #restart: unless-stopped #
         env_file: 
             - ./docker_var.env # .env file defines the $ENVIRONMENT_VARIABLE ( better practices ) 
